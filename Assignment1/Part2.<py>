@@ -1,0 +1,38 @@
+#Author: Ruth Mfon-Uko
+
+#isStringPermutation(...)
+
+#this function adds the values of the characters of each string to see if they are equal
+def isStringPermutation(str1, str2):
+    add_str1 = 0;
+    add_str2 = 0;
+    
+    if len(str1) == len(str2):     #checks if both string have the same length. 
+                                    #If it's not the same length, it's impossible for one to be the permutation of the other
+        for x in range(len(str1)):
+            add_str1 += ord(str1[x])         #changes each character to it's ascii value and adds the summation of the values
+            add_str2 += ord(str2[x])
+            
+        if add_str1 == add_str2:
+            return True
+        
+    return False 
+
+
+#pairsThatEqualSum(...)
+
+def checkTarget(num, target):
+    remainder = target-num
+    return remainder
+    
+def pairsThatEqualSum(arr, target):
+    pairs = {}
+    pairsOfArrays = []
+    for i in range(len(arr)):
+        if checkTarget(arr[i], target) in arr:   #checks if remainder is in array
+            if not arr[i] in pairs.values():      #checks if pair already exists
+                pairs[arr[i]] = checkTarget(arr[i], target)
+    
+    pairsOfArrays.append(pairs)
+    return pairsOfArrays
+    
